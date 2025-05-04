@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alfred Putra - God-Centered Vision</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #3498db;
+            --secondary: #2c3e50;
+            --accent: #27ae60;
+            --text: #333;
+            --bg: #f5f5f5;
+            --card-bg: white;
+            --shadow: rgba(0,0,0,0.1);
+            --scripture-bg: #f8f9fa;
+            --intro-bg: #e8f4fc;
+        }
+
+        .dark-mode {
+            --primary: #3aa8ff;
+            --secondary: #ecf0f1;
+            --accent: #2ecc71;
+            --text: #ecf0f1;
+            --bg: #121212;
+            --card-bg: #1e1e1e;
+            --shadow: rgba(0,0,0,0.3);
+            --scripture-bg: #2d2d2d;
+            --intro-bg: #2a3a4a;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            transition: all 0.3s ease;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 1px solid var(--primary);
+        }
+
+        .logo {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+
+        nav a:hover, nav a.active {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .mode-toggle {
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 1.2em;
+            cursor: pointer;
+        }
+
+        .page {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .vision-card {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            box-shadow: 0 5px 15px var(--shadow);
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            color: var(--primary);
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            color: var(--primary);
+            margin-top: 25px;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: var(--secondary);
+            font-size: 1.4em;
+        }
+
+        .scripture {
+            font-style: italic;
+            background-color: var(--scripture-bg);
+            padding: 15px;
+            border-left: 5px solid var(--primary);
+            margin: 20px 0;
+            color: var(--secondary);
+            border-radius: 5px;
+        }
+
+        .blessing {
+            font-weight: bold;
+            color: var(--accent);
+        }
+
+        .personal-intro {
+            text-align: center;
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: var(--intro-bg);
+            border-radius: 10px;
+        }
+
+        .spotify-embed {
+            margin: 20px 0;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .book-highlight {
+            background-color: var(--intro-bg);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 25px 0;
+        }
+
+        .book-cover {
+            float: left;
+            margin-right: 20px;
+            width: 150px;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px var(--shadow);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .testimonial {
+            background-color: var(--card-bg);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px var(--shadow);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            border-top: 1px solid var(--primary);
+            font-size: 0.9em;
+            color: var(--secondary);
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            nav {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .book-cover {
+                float: none;
+                display: block;
+                margin: 0 auto 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">Alfred Putra</div>
+            <nav>
+                <a href="#" class="nav-link active" data-page="home">Home</a>
+                <a href="#" class="nav-link" data-page="purpose">My Purpose</a>
+                <a href="#" class="nav-link" data-page="vision">Vision Board</a>
+                <a href="#" class="nav-link" data-page="worship">Sermon Videos</a>
+            </nav>
+            <button class="mode-toggle" id="modeToggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </header>
+
+        <!-- Home Page -->
+        <div class="page active" id="home">
+            <div class="vision-card">
+                <h1>Welcome to My God-Centered Vision</h1>
+                
+                <div class="personal-intro">
+                    <p>Hello, I'm <span class="blessing">Alfred Putra</span>, a follower of Christ seeking to live a life that glorifies God in all aspects - through my work, my home, and my relationships.</p>
+                    <p>This vision represents the life I believe God is calling me to - a balanced life of technology and agriculture, urban skills and rural values, all centered on worship.</p>
+                </div>
+                
+                <div class="scripture">
+                    "Surely God is my salvation; I will trust and not be afraid. The LORD, the LORD himself, is my strength and my defense; he has become my salvation."<br>
+                    — Isaiah 12:2 (My Anchor Verse)
+                </div>
+                
+                <div class="grid">
+                    <div class="testimonial">
+                        <h3>My Mission</h3>
+                        <p>To live authentically as a child of God, using my talents to serve others while enjoying the peace of countryside living.</p>
+                    </div>
+                    <div class="testimonial">
+                        <h3>My Values</h3>
+                        <p>Faith, Integrity, Simplicity, Stewardship, and Community - these pillars guide my decisions and lifestyle.</p>
+                    </div>
+                    <div class="testimonial">
+                        <h3>My Lifestyle</h3>
+                        <p>Balancing freelance programming with hands-on agriculture, creating a sustainable life that honors God's creation.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Purpose Page -->
+        <div class="page" id="purpose">
+            <div class="vision-card">
+                <h1>My Purpose Driven Journey</h1>
+                
+                <div class="book-highlight">
+                    <img src="https://covers.openlibrary.org/b/id/240726-L.jpg" alt="The Purpose Driven Life" class="book-cover">
+                    <h2>Transformed by "The Purpose Driven Life"</h2>
+                    <p>Rick Warren's timeless book revolutionized my understanding of God's plan for my life. These key lessons shaped my vision:</p>
+                    <ul>
+                        <li><strong>It's not about me</strong> - My life is about God's purposes, not my own ambitions</li>
+                        <li><strong>Created for worship</strong> - Everything I do can be an act of worship</li>
+                        <li><strong>Formed for God's family</strong> - My relationships matter eternally</li>
+                        <li><strong>Shaped for serving</strong> - My skills in tech and agriculture are tools for ministry</li>
+                        <li><strong>Made for a mission</strong> - My rural lifestyle is my mission field</li>
+                    </ul>
+                    <p>This book helped me see my freelance work, farming activities, and community life as interconnected parts of God's plan rather than separate pursuits.</p>
+                </div>
+                
+                <div class="scripture">
+                    "For we are God's handiwork, created in Christ Jesus to do good works, which God prepared in advance for us to do."<br>
+                    — Ephesians 2:10
+                </div>
+                
+                <h2>My Five Purposes</h2>
+                <div class="grid">
+                    <div class="testimonial">
+                        <h3>1. Worship</h3>
+                        <p>I structure my days around prayer and Scripture. My work begins with worship, and my farming activities become acts of gratitude for God's provision.</p>
+                    </div>
+                    <div class="testimonial">
+                        <h3>2. Fellowship</h3>
+                        <p>My home is open to neighbors and fellow believers. I host Bible studies and skill-sharing sessions to build community.</p>
+                    </div>
+                    <div class="testimonial">
+                        <h3>3. Discipleship</h3>
+                        <p>Through mentoring young programmers and farmers, I invest in the next generation of believers.</p>
+                    </div>
+                    <div class="testimonial">
+                        <h3>4. Ministry</h3>
+                        <p>I offer free tech help to local businesses and teach sustainable farming methods as practical ministry.</p>
+                    </div>
+                    <div class="testimonial">
+                        <h3>5. Mission</h3>
+                        <p>My life demonstrates an alternative to the rat race - a peaceful, purposeful existence centered on Christ.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Vision Board Page -->
+        <div class="page" id="vision">
+            <div class="vision-card">
+                <h1>My Vision Board</h1>
+                
+                <div class="vision-section">
+                    <h2>My Identity in Christ</h2>
+                    <p>I am a <span class="blessing">child of God</span>, created to worship Him and reflect His glory in all I do. My life is a living testimony of His grace, love, and faithfulness.</p>
+                    <p>Daily, I seek to grow in spiritual maturity through prayer, Scripture study, and serving others. My relationship with God is the foundation for everything else in my life.</p>
+                </div>
+                
+                <div class="vision-section">
+                    <h2>My Countryside Home</h2>
+                    <p>I live in a peaceful <span class="blessing">rural area</span>, surrounded by God's beautiful creation. My home is simple but comfortable - a place of rest, hospitality, and family.</p>
+                    <p>The property includes:</p>
+                    <ul>
+                        <li>A cozy house with space for family and guests</li>
+                        <li>A productive home garden with vegetables and fruits</li>
+                        <li>Small-scale aquaculture ponds for fish farming</li>
+                        <li>Agricultural land that I cultivate sustainably</li>
+                    </ul>
+                </div>
+                
+                <div class="vision-section">
+                    <h2>My Work & Vocation</h2>
+                    <p>As a <span class="blessing">freelance programmer</span>, I use my technical skills to serve clients worldwide while maintaining flexibility. My work:</p>
+                    <ul>
+                        <li>Provides financial provision for my family</li>
+                        <li>Solves meaningful problems for clients</li>
+                        <li>Allows me to work remotely from my countryside home</li>
+                        <li>Gives me time to pursue other passions</li>
+                    </ul>
+                    <p>I view my work as worship, doing it with excellence as unto the Lord.</p>
+                </div>
+                
+                <div class="vision-section">
+                    <h2>My Agricultural Pursuits</h2>
+                    <p>My <span class="blessing">farm and fishery</span> operations:</p>
+                    <ul>
+                        <li>Provide fresh, healthy food for my family</li>
+                        <li>Create additional income streams</li>
+                        <li>Allow me to steward God's creation responsibly</li>
+                        <li>Give me opportunities to teach others sustainable practices</li>
+                    </ul>
+                    <p>Through agriculture, I connect with the land and experience the fulfillment of nurturing life.</p>
+                </div>
+                
+                <div class="scripture">
+                    "Commit to the LORD whatever you do, and he will establish your plans."<br>
+                    — Proverbs 16:3
+                </div>
+            </div>
+        </div>
+
+        <!-- Sermon Videos Page -->
+        <div class="page" id="worship">
+            <div class="vision-card">
+                <h1>Sermon Videos</h1>
+                <p>These messages and sermons from GMS Church nourish my spirit and help me grow in faith:</p>
+
+                <div class="scripture">
+                    "Seek the LORD while he may be found; call upon him while he is near."<br>
+                    — Isaiah 55:6
+                    <p>Let us continually seek God throughout our lives, for in Him we find true purpose and eternal joy.</p>
+                </div>
+
+                <h2>GMS Church - Khotbah Ps. Philip Mantofa</h2>
+                
+                <div class="spotify-embed">
+                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/pEs-jBRlw1Q" title="Sermon 1" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <div class="spotify-embed">
+                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/EjAj5S98iS4" title="Sermon 2" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <div class="spotify-embed">
+                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/p2z7E8Pfz6U" title="Sermon 3" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <div class="spotify-embed">
+                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/r0xjWx1AwfA" title="Sermon 4" frameborder="0" allowfullscreen></iframe>
+                </div>
+
+                <div class="scripture">
+                    "But seek first the kingdom of God and his righteousness, and all these things will be added to you."<br>
+                    — Matthew 6:33
+                    <p>May these sermons inspire you to draw closer to God and seek Him above all else in your life.</p>
+                </div>
+                
+                <h2>My Spiritual Routine</h2>
+                <ul>
+                    <li><strong>Morning:</strong> Start the day with God's Word and prayer</li>
+                    <li><strong>Work Sessions:</strong> Listen to sermons while working</li>
+                    <li><strong>Farm Work:</strong> Meditate on Scripture while tending to plants</li>
+                    <li><strong>Evening:</strong> Reflect on God's faithfulness before sleep</li>
+                </ul>
+            </div>
+        </div>
+
+        <footer>
+            This vision is dedicated to God's glory. May He establish the work of my hands.<br>
+            Created with faith by Alfred Putra on <span id="date"></span>
+        </footer>
+    </div>
+
+    <script>
+        // Dark/Light Mode Toggle
+        const modeToggle = document.getElementById('modeToggle');
+        const body = document.body;
+        
+        modeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            const icon = modeToggle.querySelector('i');
+            if (body.classList.contains('dark-mode')) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            }
+        });
+
+        // Page Navigation
+        const navLinks = document.querySelectorAll('.nav-link');
+        const pages = document.querySelectorAll('.page');
+        
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const pageId = link.getAttribute('data-page');
+                
+                // Update active nav link
+                navLinks.forEach(navLink => navLink.classList.remove('active'));
+                link.classList.add('active');
+                
+                // Show selected page
+                pages.forEach(page => page.classList.remove('active'));
+                document.getElementById(pageId).classList.add('active');
+            });
+        });
+
+        // Set current date
+        document.getElementById('date').textContent = new Date().toLocaleDateString('en-US', {
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric'
+        });
+    </script>
+</body>
+</html>
